@@ -65,6 +65,15 @@ cd libxml2-2.9.2
 make
 cd $DIR/prog-query
 
+
+# json
+mkdir json
+cd json
+tar xf ../../data/prog/libjson-master.tar.xz
+cd libjson-master
+make
+cd $DIR/prog-query
+
 # python
 mkdir python
 cd python
@@ -128,6 +137,15 @@ cd xml
 tar xf ../../data/prog/libxml2-2.9.2.tar.gz
 cd libxml2-2.9.2
 ./configure --disable-shared --with-coverage
+make
+cd $DIR/prog-gcov
+
+# json
+mkdir json
+cd json
+tar xf ../../data/prog/libjson-master.tar.xz
+cd libjson-master
+#TODO: call make with appropriate coverage flags.
 make
 cd $DIR/prog-gcov
 
