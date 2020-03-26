@@ -180,11 +180,13 @@ public class Main {
 	public static void runFuzz(Random random, Fuzzer fuzzer, Processor processor, Program program, int numMutations) {
 		RunCommand.FUZZER.run(getDefaultFuzzSettings(random, numMutations), fuzzer, Fuzzer.TRAIN, program.getSettings(), getDefaultSyntheticSettings(), SyntheticLearner.SYNTHESIS, SyntheticGrammar.XML, getDefaultLearnerDataSettings(), getDefaultCompareSettings(), processor, getDefaultLearnerSettings(), getDefaultLongRunningSettings(), getDefaultCallbackFilter(), random);
 	}
-	
+	//Why is the Grammar only XML here? Does that affect the execution?
+	//Not as much as run for LEARN RunCommand uses only program, learnerDataSettings and learnerSettings.
 	public static void runLearn(Program program, Random random) {
 		RunCommand.LEARN.run(getDefaultFuzzSettings(random), Fuzzer.TRAIN, Fuzzer.TRAIN, program.getSettings(), getDefaultSyntheticSettings(), SyntheticLearner.SYNTHESIS, SyntheticGrammar.XML, getDefaultLearnerDataSettings(), getDefaultCompareSettings(), Processor.BOUND_THEN_FILTER, getDefaultLearnerSettings(), getDefaultLongRunningSettings(), getDefaultCallbackFilter(), random);
 	}
-	
+
+	//Similarly, why is the program settings XML here? How does that affect the execution?
 	public static void runSynthetic(Random random, SyntheticLearner syntheticLearner, SyntheticGrammar syntheticGrammar, int numSamples) {
 		RunCommand.SYNTHETIC.run(getDefaultFuzzSettings(random), Fuzzer.TRAIN, Fuzzer.TRAIN, Program.XML.getSettings(), getDefaultSyntheticSettings(numSamples), syntheticLearner, syntheticGrammar, getDefaultLearnerDataSettings(), getDefaultCompareSettings(), Processor.BOUND_THEN_FILTER, getDefaultLearnerSettings(numSamples), getDefaultLongRunningSettings(), getDefaultCallbackFilter(), random);
 	}
@@ -388,7 +390,7 @@ public class Main {
 			} else {
 				usage();
 			}
-			
+			//Random() returns a new instance of a java.util.Random class.
 			runLearn(program, new Random());
 			
 		} else if(args[0].equals("fuzz-program")) {
