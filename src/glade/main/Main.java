@@ -316,7 +316,7 @@ public class Main {
 		System.out.println();
 		System.out.println("Learn program input grammar:");
 		System.out.println("  java -jar glade.jar learn-program <program>");
-		System.out.println("  <program> = sed, grep, flex, xml, python, js");
+		System.out.println("  <program> = sed, grep, flex, xml, python, js, json");
 		System.out.println();
 		System.out.println("Learn program input grammar:");
 		System.out.println("  java -jar glade.jar fuzz-program <program>");
@@ -379,7 +379,9 @@ public class Main {
 				program = Program.SED;
 			} else if(args[1].equals("grep")) {
 				program = Program.GREP;
-			} else if(args[1].equals("flex")) {
+			} else if(args[1].equals("json")) {
+				program = Program.JSON;
+			}else if(args[1].equals("flex")) {
 				program = Program.FLEX;
 			} else if(args[1].equals("xml")) {
 				program = Program.XML;

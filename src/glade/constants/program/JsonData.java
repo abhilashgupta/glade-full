@@ -24,6 +24,9 @@ public class JsonData {
 	public static final String JSON_NAME = "json";
 	public static final ProgramData JSON_DATA = new ShellProgramData(Files.FILE_PARAMETERS, JSON_EXE, JSON_GCOV, JSON_IS_ERROR);
 	public static final ProgramExamples JSON_EXAMPLES = new MultiFileProgramExamples(Files.FILE_PARAMETERS, JSON_NAME, JSON_EXTENSION, JSON_EMPTY, new IdentityWrapper());
-	public static final Filter<String> JSON_FILTER = new ConstantFilter<String>(public boolean filter(String s) { return !s.trim().contains("\n"); }};
+	public static final Filter<String> JSON_FILTER = new Filter<String>() { public boolean filter(String s) { return !s.trim().contains("\n"); }};
+
+
+	
 	
 }

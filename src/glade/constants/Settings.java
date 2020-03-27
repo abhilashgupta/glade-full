@@ -138,6 +138,7 @@ public class Settings {
 	public static enum SyntheticGrammar {
 		//we might need one json contemporary here too.
 		//needs more looking into.
+		//for now proceeding with XML, as is in the glade-full repository. :/
 		URL, GREP, LISP, XML;
 		public MultiGrammar getGrammar() {
 			switch(this) {
