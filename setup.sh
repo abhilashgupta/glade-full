@@ -145,7 +145,6 @@ mkdir json
 cd json
 tar xf ../../data/prog/libjson-master.tar.xz
 cd libjson-master
-#TODO: call make with appropriate coverage flags.
 make
 cd $DIR/prog-gcov
 

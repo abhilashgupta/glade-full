@@ -173,6 +173,7 @@ public class Main {
 		}
 	}
 	
+	//Again, why does this use only SyntheticGrammar.XML?
 	public static void runFuzz(Random random, Fuzzer fuzzer, Processor processor, Program program) {
 		RunCommand.FUZZER.run(getDefaultFuzzSettings(random), fuzzer, Fuzzer.TRAIN, program.getSettings(), getDefaultSyntheticSettings(), SyntheticLearner.SYNTHESIS, SyntheticGrammar.XML, getDefaultLearnerDataSettings(), getDefaultCompareSettings(), processor, getDefaultLearnerSettings(), getDefaultLongRunningSettings(), getDefaultCallbackFilter(), random);
 	}
@@ -320,7 +321,7 @@ public class Main {
 		System.out.println();
 		System.out.println("Learn program input grammar:");
 		System.out.println("  java -jar glade.jar fuzz-program <program>");
-		System.out.println("  <program> = sed, grep, flex, xml, python, js");
+		System.out.println("  <program> = sed, grep, flex, xml, python, js, json");
 		System.exit(0);
 	}
 	
@@ -399,7 +400,7 @@ public class Main {
 			if(args.length != 2) {
 				usage();
 			}
-			
+			//Honestly, no idea what this does.
 			Processor processor = Processor.BOUND_THEN_FILTER_ASCII;
 			
 			Program program = null;
@@ -415,6 +416,8 @@ public class Main {
 				program = Program.PYTHON_WRAPPED;
 			} else if(args[1].equals("js")) {
 				program = Program.FFJS;
+			}  else if(args[1].equals("json")) {
+				program = Program.JSON;
 			} else {
 				usage();
 			}
