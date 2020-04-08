@@ -28,6 +28,7 @@ import glade.constants.program.FFJSData;
 import glade.constants.program.FlexData;
 import glade.constants.program.GraphvizData;
 import glade.constants.program.GrepData;
+import glade.constants.program.JsonData;
 import glade.constants.program.PythonData;
 import glade.constants.program.RubyData;
 import glade.constants.program.SedData;
@@ -98,6 +99,7 @@ public class Settings {
 	}
 	
 	public static enum SyntheticLearner {
+		//this should be fine.
 		SYNTHESIS, REGULAR_SYNTHESIS, NO_CONSTANT_SYNTHESIS, RPNI, LSTAR;
 		public OracleLearner<?> getOracleLearner(ProgramSettings program, LearnerSettings learner, FuzzSettings fuzz, Random random) {
 			switch(this) {
@@ -134,6 +136,9 @@ public class Settings {
 	}
 	
 	public static enum SyntheticGrammar {
+		//we might need one json contemporary here too.
+		//needs more looking into.
+		//for now proceeding with XML, as is in the glade-full repository. :/
 		URL, GREP, LISP, XML;
 		public MultiGrammar getGrammar() {
 			switch(this) {
@@ -232,9 +237,12 @@ public class Settings {
 	}
 	
 	public static enum Program {
-		XML, GREP, SED, BISON, FLEX, PYTHON, PYTHON_WRAPPED, FFJS, FFJS_WRAPPED, RUBY, RUBY_WRAPPED, GRAPHVIZ;
+		JSON, XML, GREP, SED, BISON, FLEX, PYTHON, PYTHON_WRAPPED, FFJS, FFJS_WRAPPED, RUBY, RUBY_WRAPPED, GRAPHVIZ;
 		public ProgramSettings getSettings() {
 			switch(this) {
+			case JSON:
+				return new ProgramSettings(JsonData.JSON_DATA, JsonData.JSON_EXAMPLES, JsonData.JSON_NAME, JsonData.JSON_FILTER);
+				//why does this not have a break? 
 			case XML:
 				return new ProgramSettings(XmlData.XML_DATA, XmlData.XML_EXAMPLES, XmlData.XML_NAME, XmlData.XML_FILTER);
 			case FFJS:
